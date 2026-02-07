@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetch Monitor - 感谢使用</title>
+    <title>Fetch Monitor - We'll Miss You</title>
     <style>
         * {
             margin: 0;
@@ -212,7 +212,7 @@
             color: #666;
         }
 
-        /* 成功状态 */
+        /* Success state */
         .success-state {
             display: none;
             text-align: center;
@@ -239,76 +239,76 @@
 </head>
 <body>
     <div class="container">
-        <!-- 反馈表单 -->
+        <!-- Feedback form -->
         <div id="feedbackForm">
             <div class="emoji-header">👋</div>
-            <h1>很遗憾看到你离开</h1>
-            <p class="subtitle">你的反馈对我们非常重要，能帮助我们做得更好。<br>只需 30 秒，谢谢！</p>
+            <h1>Sorry to see you go</h1>
+            <p class="subtitle">Your feedback is really important to us and helps us improve.<br>It only takes 30 seconds. Thank you!</p>
 
-            <p class="question">你卸载 Fetch Monitor 的主要原因是？</p>
+            <p class="question">What's the main reason you uninstalled Fetch Monitor?</p>
             <div class="options" id="reasonOptions">
                 <label class="option" data-value="not_needed">
                     <input type="radio" name="reason" value="not_needed">
                     <span class="checkmark"></span>
-                    <span class="label">不再需要这个功能了</span>
+                    <span class="label">I no longer need this feature</span>
                 </label>
                 <label class="option" data-value="hard_to_use">
                     <input type="radio" name="reason" value="hard_to_use">
                     <span class="checkmark"></span>
-                    <span class="label">使用起来太复杂 / 不会用</span>
+                    <span class="label">Too complicated / hard to use</span>
                 </label>
                 <label class="option" data-value="not_working">
                     <input type="radio" name="reason" value="not_working">
                     <span class="checkmark"></span>
-                    <span class="label">功能不正常 / 有 Bug</span>
+                    <span class="label">It didn't work properly / had bugs</span>
                 </label>
                 <label class="option" data-value="performance">
                     <input type="radio" name="reason" value="performance">
                     <span class="checkmark"></span>
-                    <span class="label">影响浏览器性能</span>
+                    <span class="label">It slowed down my browser</span>
                 </label>
                 <label class="option" data-value="found_better">
                     <input type="radio" name="reason" value="found_better">
                     <span class="checkmark"></span>
-                    <span class="label">找到了更好的替代品</span>
+                    <span class="label">I found a better alternative</span>
                 </label>
                 <label class="option" data-value="privacy">
                     <input type="radio" name="reason" value="privacy">
                     <span class="checkmark"></span>
-                    <span class="label">担心隐私 / 安全问题</span>
+                    <span class="label">Privacy / security concerns</span>
                 </label>
                 <label class="option" data-value="other">
                     <input type="radio" name="reason" value="other">
                     <span class="checkmark"></span>
-                    <span class="label">其他原因</span>
+                    <span class="label">Other reason</span>
                 </label>
             </div>
 
             <div class="textarea-wrapper">
-                <label for="feedback">还有什么想告诉我们的？（可选）</label>
-                <textarea id="feedback" placeholder="比如你希望增加什么功能、改善什么体验..."></textarea>
+                <label for="feedback">Anything else you'd like to tell us? (Optional)</label>
+                <textarea id="feedback" placeholder="e.g. features you'd like to see, how we could improve..."></textarea>
             </div>
 
-            <button class="submit-btn" id="submitBtn" onclick="submitFeedback()">提交反馈</button>
-            <a class="skip-link" id="skipLink" onclick="showSuccess()">跳过</a>
+            <button class="submit-btn" id="submitBtn" onclick="submitFeedback()">Submit Feedback</button>
+            <a class="skip-link" id="skipLink" onclick="showSuccess()">Skip</a>
         </div>
 
-        <!-- 成功状态 -->
+        <!-- Success state -->
         <div class="success-state" id="successState">
             <div class="emoji-header">🙏</div>
-            <h2>感谢你的反馈！</h2>
-            <p>你的意见对我们非常宝贵，<br>我们会认真改进。期待将来再见！</p>
+            <h2>Thank you for your feedback!</h2>
+            <p>Your input is incredibly valuable to us.<br>We'll work hard to improve. Hope to see you again!</p>
         </div>
     </div>
 
     <script>
         // ========================================
-        // 配置：将下面的 URL 替换为你的 Google Apps Script Web App URL
-        // 参考 UNINSTALL-SETUP.md 文档进行配置
+        // Config: Replace the URL below with your Google Apps Script Web App URL
+        // See UNINSTALL-SETUP.md for setup instructions
         // ========================================
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzUiKS0KiYc1UDZQCt97JZwlB4cNYjMflk06dGP9gsD1UweP5uEErSw-xSDM6Uh-hKmPQ/exec';
 
-        // 选项交互
+        // Option interaction
         document.querySelectorAll('.option').forEach(option => {
             option.addEventListener('click', function () {
                 document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
@@ -317,7 +317,7 @@
             });
         });
 
-        // 提交反馈
+        // Submit feedback
         async function submitFeedback() {
             const selectedOption = document.querySelector('.option.selected');
             const reason = selectedOption ? selectedOption.dataset.value : '';
@@ -325,7 +325,7 @@
             const feedback = document.getElementById('feedback').value.trim();
 
             if (!reason) {
-                // 轻微抖动提示选择
+                // Subtle shake to prompt selection
                 document.getElementById('reasonOptions').style.animation = 'none';
                 setTimeout(() => {
                     document.getElementById('reasonOptions').style.animation = '';
@@ -335,7 +335,7 @@
 
             const btn = document.getElementById('submitBtn');
             btn.disabled = true;
-            btn.textContent = '提交中...';
+            btn.textContent = 'Submitting...';
 
             const data = {
                 reason: reason,
@@ -347,7 +347,7 @@
             };
 
             try {
-                // 提交到 Google Apps Script
+                // Submit to Google Apps Script
                 if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL') {
                     await fetch(GOOGLE_SCRIPT_URL, {
                         method: 'POST',
@@ -358,13 +358,13 @@
                 }
                 showSuccess();
             } catch (e) {
-                // 即使提交失败也显示成功（用户体验优先）
+                // Show success even if submission fails (UX first)
                 console.error('Submit error:', e);
                 showSuccess();
             }
         }
 
-        // 显示成功状态
+        // Show success state
         function showSuccess() {
             document.getElementById('feedbackForm').style.display = 'none';
             document.getElementById('successState').style.display = 'block';
